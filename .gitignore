@@ -1,3 +1,7 @@
+# Config files
+*.txt
+*xml
+
 # shared objects
 *.dll
 
