@@ -1,0 +1,29 @@
+# shared objects
+*.dll
+
+# executables
+*.exe
+
+# Microsoft Visual Studio files:  resource objects
+*.aps
+*.res
+
+# Visual Studio:  cache
+*.bsc
+*.ilk
+*.opensdf
+*.sbr
+*.sdf
+*.suo
+
+# Visual Studio:  debugging
+*.idb
+*.ncb
+*.pdb
+
+# Visual Studio:  logging
+*.lastbuildstate
+*.log
+*.manifest
+*.plg
+*.tlog
