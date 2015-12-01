@@ -124,7 +124,7 @@ namespace TicTacToe
                 MessageBox.Show(winner_name + " wins!", "Game over");
             }
 
-            if (turn_num == 9)
+            else if (turn_num == 9)
             {
                 MessageBox.Show("Draw!", "Game over");
             }
