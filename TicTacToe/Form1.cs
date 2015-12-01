@@ -142,7 +142,7 @@ namespace TicTacToe
                 {
                     Button b = (Button)c;
                     b.Enabled = true;
-                    b.BackColor = Color.White;
+                    b.UseVisualStyleBackColor = true;
                     b.Text = "";
                 }
             }
