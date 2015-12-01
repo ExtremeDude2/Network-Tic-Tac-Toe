@@ -33,9 +33,9 @@
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.networkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.joinServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.disconnectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startServer = new System.Windows.Forms.ToolStripMenuItem();
+            this.joinServer = new System.Windows.Forms.ToolStripMenuItem();
+            this.disconnect = new System.Windows.Forms.ToolStripMenuItem();
             this.NW = new System.Windows.Forms.Button();
             this.N = new System.Windows.Forms.Button();
             this.NE = new System.Windows.Forms.Button();
@@ -71,44 +71,48 @@
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // networkToolStripMenuItem
             // 
             this.networkToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startServerToolStripMenuItem,
-            this.joinServerToolStripMenuItem,
-            this.disconnectToolStripMenuItem});
+            this.startServer,
+            this.joinServer,
+            this.disconnect});
             this.networkToolStripMenuItem.Name = "networkToolStripMenuItem";
             this.networkToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.networkToolStripMenuItem.Text = "Network";
             // 
-            // startServerToolStripMenuItem
+            // startServer
             // 
-            this.startServerToolStripMenuItem.Name = "startServerToolStripMenuItem";
-            this.startServerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.startServerToolStripMenuItem.Text = "Start Server";
+            this.startServer.Name = "startServer";
+            this.startServer.Size = new System.Drawing.Size(152, 22);
+            this.startServer.Text = "Start Server";
+            this.startServer.Click += new System.EventHandler(this.startServerToolStripMenuItem_Click);
             // 
-            // joinServerToolStripMenuItem
+            // joinServer
             // 
-            this.joinServerToolStripMenuItem.Name = "joinServerToolStripMenuItem";
-            this.joinServerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.joinServerToolStripMenuItem.Text = "Join Server";
+            this.joinServer.Name = "joinServer";
+            this.joinServer.Size = new System.Drawing.Size(152, 22);
+            this.joinServer.Text = "Join Server";
+            this.joinServer.Click += new System.EventHandler(this.joinServerToolStripMenuItem_Click);
             // 
-            // disconnectToolStripMenuItem
+            // disconnect
             // 
-            this.disconnectToolStripMenuItem.Name = "disconnectToolStripMenuItem";
-            this.disconnectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.disconnectToolStripMenuItem.Text = "Disconnect";
+            this.disconnect.Enabled = false;
+            this.disconnect.Name = "disconnect";
+            this.disconnect.Size = new System.Drawing.Size(152, 22);
+            this.disconnect.Text = "Disconnect";
+            this.disconnect.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
             // NW
             // 
@@ -233,9 +237,9 @@
         private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem networkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startServerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem joinServerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem disconnectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startServer;
+        private System.Windows.Forms.ToolStripMenuItem joinServer;
+        private System.Windows.Forms.ToolStripMenuItem disconnect;
         private System.Windows.Forms.Button NW;
         private System.Windows.Forms.Button N;
         private System.Windows.Forms.Button NE;

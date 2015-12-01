@@ -4,16 +4,21 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-enum player { X, O };
+enum player : uint { X, O };
 
 namespace TicTacToe
 {
     public partial class Form1 : Form
     {
+        Network objNetwork;
+
         uint turn = (uint)player.X;
         uint turn_num = 1;
 
@@ -24,7 +29,7 @@ namespace TicTacToe
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            objNetwork = new Network(this);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -131,6 +136,39 @@ namespace TicTacToe
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newGame();
+        }
+
+        private void startServerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newGame();
+            objNetwork.startServer();
+
+            joinServer.Enabled = false;
+            startServer.Enabled = false;
+            disconnect.Enabled = true;
+        }
+
+        private void joinServerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newGame();
+
+            joinServer.Enabled = false;
+            startServer.Enabled = false;
+            disconnect.Enabled = true;
+        }
+
+        private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newGame();
+
+            joinServer.Enabled = true;
+            startServer.Enabled = true;
+            disconnect.Enabled = false;
+        }
+
+        private void newGame()
         {
             turn = (uint)player.X;
             turn_num = 1;
