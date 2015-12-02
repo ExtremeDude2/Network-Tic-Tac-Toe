@@ -95,14 +95,14 @@
             // startServer
             // 
             this.startServer.Name = "startServer";
-            this.startServer.Size = new System.Drawing.Size(152, 22);
+            this.startServer.Size = new System.Drawing.Size(133, 22);
             this.startServer.Text = "Start Server";
             this.startServer.Click += new System.EventHandler(this.startServerToolStripMenuItem_Click);
             // 
             // joinServer
             // 
             this.joinServer.Name = "joinServer";
-            this.joinServer.Size = new System.Drawing.Size(152, 22);
+            this.joinServer.Size = new System.Drawing.Size(133, 22);
             this.joinServer.Text = "Join Server";
             this.joinServer.Click += new System.EventHandler(this.joinServerToolStripMenuItem_Click);
             // 
@@ -110,7 +110,7 @@
             // 
             this.disconnect.Enabled = false;
             this.disconnect.Name = "disconnect";
-            this.disconnect.Size = new System.Drawing.Size(152, 22);
+            this.disconnect.Size = new System.Drawing.Size(133, 22);
             this.disconnect.Text = "Disconnect";
             this.disconnect.Click += new System.EventHandler(this.disconnectToolStripMenuItem_Click);
             // 
@@ -240,15 +240,15 @@
         private System.Windows.Forms.ToolStripMenuItem startServer;
         private System.Windows.Forms.ToolStripMenuItem joinServer;
         private System.Windows.Forms.ToolStripMenuItem disconnect;
-        private System.Windows.Forms.Button NW;
-        private System.Windows.Forms.Button N;
-        private System.Windows.Forms.Button NE;
-        private System.Windows.Forms.Button W;
-        private System.Windows.Forms.Button Cen;
-        private System.Windows.Forms.Button E;
-        private System.Windows.Forms.Button SW;
-        private System.Windows.Forms.Button S;
-        private System.Windows.Forms.Button SE;
+        public System.Windows.Forms.Button NW;
+        public System.Windows.Forms.Button N;
+        public System.Windows.Forms.Button NE;
+        public System.Windows.Forms.Button W;
+        public System.Windows.Forms.Button Cen;
+        public System.Windows.Forms.Button E;
+        public System.Windows.Forms.Button SW;
+        public System.Windows.Forms.Button S;
+        public System.Windows.Forms.Button SE;
     }
 }
 

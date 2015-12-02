@@ -10,8 +10,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
-enum player : uint { X, O };
+enum player { none, X, O };
 
 namespace TicTacToe
 {
@@ -19,8 +20,10 @@ namespace TicTacToe
     {
         Network objNetwork;
 
-        uint turn = (uint)player.X;
-        uint turn_num = 1;
+        public uint turn = (uint)player.X;
+        public uint turn_num = 1;
+
+        public byte[] data = new byte[512];
 
         public Form1()
         {
@@ -30,6 +33,19 @@ namespace TicTacToe
         private void Form1_Load(object sender, EventArgs e)
         {
             objNetwork = new Network(this);
+
+            // Initialize data packet
+            data[0] = (byte)player.none;    //NW
+            data[1] = (byte)player.none;    //N
+            data[2] = (byte)player.none;    //NE
+            data[3] = (byte)player.none;    //W
+            data[4] = (byte)player.none;    //Cen
+            data[5] = (byte)player.none;    //E
+            data[6] = (byte)player.none;    //SW
+            data[7] = (byte)player.none;    //S
+            data[8] = (byte)player.none;    //SE
+            data[9] = (byte)player.X;    //turn
+            data[10] = (byte) turn_num;   //turn_num
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -40,23 +56,28 @@ namespace TicTacToe
         private void button_click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
-            if (turn == 0)
+
+            // Player X
+            if (data[9] == 1)
             {
                 b.BackColor = Color.Red;
                 b.Text = "X";
                 checkWin();
-                turn = (uint)player.O;
+                data[9] = (byte)player.O;
             }
-            else
+            // Player O
+            else if (data[9] == 2)
             {
                 b.BackColor = Color.Blue;
                 b.Text = "O";
                 checkWin();
-                turn = (uint)player.X;
+                data[9] = (byte)player.X;
             }
 
-            turn_num++;
+            data[10]++;
             b.Enabled = false;
+
+
         }
 
         private void checkWin()
@@ -117,7 +138,7 @@ namespace TicTacToe
                 }
                 catch { }
 
-                if (turn == (uint)player.X)
+                if (data[9] == (uint)player.X)
                 {
                     winner_name = "X";
                 }
@@ -129,7 +150,7 @@ namespace TicTacToe
                 MessageBox.Show(winner_name + " wins!", "Game over");
             }
 
-            else if (turn_num == 9)
+            else if (data[10] == 9)
             {
                 MessageBox.Show("Draw!", "Game over");
             }
@@ -142,36 +163,40 @@ namespace TicTacToe
 
         private void startServerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newGame();
-            objNetwork.startServer();
-
             joinServer.Enabled = false;
             startServer.Enabled = false;
             disconnect.Enabled = true;
+
+            newGame();
+            objNetwork.startServer();
+            //toolStripStatusLabel.Text = "Waiting for connection...";
         }
 
         private void joinServerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newGame();
-
             joinServer.Enabled = false;
             startServer.Enabled = false;
             disconnect.Enabled = true;
+
+            newGame();
+            objNetwork.startClient();
+            //toolStripStatusLabel.Text = "Connecting...";
         }
 
         private void disconnectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newGame();
-
             joinServer.Enabled = true;
             startServer.Enabled = true;
             disconnect.Enabled = false;
+
+            newGame();
+            //toolStripStatusLabel.Text = "";
         }
 
         private void newGame()
         {
-            turn = (uint)player.X;
-            turn_num = 1;
+            data[9] = (byte)player.X;
+            data[10] = 1;
 
             // Enable all the buttons
             try
